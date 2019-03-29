@@ -4,33 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simulacro
+namespace ParcialLegendario
 {
     class Estadistica
     {
-        
+        double[] _datos;
+        public double[] Datos
+        {
+            get { return _datos; }
+        }
 
-        double promedio;
-        double[] datos;
-        public Estadistica(double[] _datos)
+        public Estadistica(Generador generador)
         {
-            datos = _datos ;
+           _datos = generador.datos;
         }
-        public Estadistica(Generador y)
-        {
-            datos = y.datos;
-        }
-        public double CalcularPromedio()
+
+        virtual public double Calcular()
         {
             double suma = 0;
-            for (int i = 0; i < datos.Length; i++)
+            for (int i = 0; i < _datos.Length; i++)
             {
-                suma += datos[i];
+               
+                suma += _datos[i];
             }
-            promedio = suma / datos.Length;
-          
-            return promedio;
-            
+            return suma / _datos.Length;
         }
     }
 }

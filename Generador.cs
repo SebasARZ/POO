@@ -4,40 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Simulacro
+namespace ParcialLegendario
 {
     class Generador
     {
         public double[] datos;
-        private double _resultado;
         static Random aleatorio = new Random();
 
-                                                   
-
-        public double resultado
-        {
-            get { return _resultado; }
-        }
 
         public Generador(int n)
         {
-          
             datos = new double[n];
             for (int i = 0; i < datos.Length; i++)
             {
-                datos[i] = aleatorio.Next(1,10);
+                datos[i] = aleatorio.Next(1, 11);
             }
         }
-        public virtual double Operar()
+        //Primera sobrecarga
+        public Generador(int n, int a, int b)
         {
-            _resultado = 0;
+            datos = new double[n];
             for (int i = 0; i < datos.Length; i++)
             {
-                _resultado += datos[i];
+                datos[i] = aleatorio.Next(a, b+1);
             }
-            return _resultado;
-            
         }
-
+        //Segunda sobrecarga
+        public Generador(double[] _datos)
+        {
+            datos = _datos;
+        }
     }
 }
